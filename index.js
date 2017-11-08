@@ -8,22 +8,24 @@ var app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
 
+
+
 app.get('/', function(req, res){
+  const result = JSON.stringify(req.query, null, 2);
+   console.log('GET');
    res.render('form');
 });
 
-// for parsing application/json
 app.use(bodyParser.json()); 
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-// for parsing multipart/form-data
 app.use(upload.array()); 
 app.use(express.static('public'));
 
 app.post('/', function(req, res){
   const result = JSON.stringify(req.body, null, 2);
-  console.log(result);
+  console.log('POST', result);
   res.send(result);
 });
 app.listen(3000);
