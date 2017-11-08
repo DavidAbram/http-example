@@ -1,0 +1,17 @@
+html
+  head
+    link(rel='stylesheet', href='https://unpkg.com/purecss@1.0.0/build/pure-min.css')
+  body
+    form.pure-form.pure-form-aligned(action='', method='post', enctype='multipart/form-data')
+      fieldset
+        div.pure-control-group
+          label(for='name') Name:
+          input#name(style='width:300px' type='text', name='name', placeholder='Enter your full name')
+        div.pure-control-group
+          label(for='email') Email:
+          input#email(style='width:300px' type='email', name='email', placeholder='Enter your email address')
+        div.pure-control-group
+          label(for='description') Description:
+          textarea#description(style='width:300px;height:100px' name='description', placeholder='Enter a short description about yourself')
+        div.pure-controls
+          input.pure-button.pure-button-primary(type='submit', value='Create Profile')
