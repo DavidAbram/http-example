@@ -16,6 +16,13 @@ app.get('/', function(req, res){
    res.render('form');
 });
 
+app.get('/test', function(req, res){
+  res.render('test', {
+    name: req.query.name,
+    email: req.query.email,
+  });
+});
+
 app.use(bodyParser.json()); 
 
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -28,4 +35,12 @@ app.post('/', function(req, res){
   console.log('POST', result);
   res.send(result);
 });
+
+app.post('/test', function(req, res){
+  res.render('test', {
+    name: req.body.name,
+    email: req.body.email,
+  });
+});
+
 app.listen(80);
