@@ -3,6 +3,9 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var upload = multer();
 var app = express();
+var weather = require('./weather');
+var xml = require('xml');
+
 
 
 app.set('view engine', 'pug');
@@ -25,6 +28,11 @@ app.get('/test', function(req, res){
     name: req.query.name,
     email: req.query.email,
   });
+});
+
+app.get('/weather', function(req, res) {
+  res.set('Content-Type', 'text/xml');
+  res.send(xml(weather()));
 });
 
 app.use(bodyParser.json()); 
